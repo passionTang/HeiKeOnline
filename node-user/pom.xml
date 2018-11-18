@@ -58,6 +58,7 @@
             <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
             <!--springcloudstream 消息驱动对rabbitmq的支持-->
         </dependency>
+        
 
 
         <!--以下是关于持久层依赖-->
