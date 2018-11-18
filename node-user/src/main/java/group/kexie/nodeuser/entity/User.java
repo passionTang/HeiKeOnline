@@ -1,5 +1,6 @@
 package group.kexie.nodeuser.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,7 +27,8 @@ public class User {
 	private String sessionkey;
 	
 	private String openid;
-	
+	/*密码值不序列化 返回到前段*/
+	@JsonIgnore
 	private String password;
 	
 	private Integer vipLevel;

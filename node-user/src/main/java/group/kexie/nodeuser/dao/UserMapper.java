@@ -14,12 +14,15 @@ import org.springframework.stereotype.Repository;
 public interface UserMapper {
 
 	//配置文件 xxxmapper.xml的方式 适用于复杂db操作
-	User selectUserBaseData(@Param("userId") Integer userId);
+//	User selectUserBaseData(@Param("userId") Integer userId);
+
+
 
 
 	//注解方式 适用于简单操作
-	@Select("select ***")
-	User example();
+	@Select("select id,name,icon,viplevel,gender,city,province,country,registertime" +
+			" from user where id = #{userId}")
+	User selectUserBaseData(@Param("userId") Integer userId);
 
 	
 }
