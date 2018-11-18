@@ -18,7 +18,8 @@ public class LogHandler {
 
     @StreamListener(value = "channel-log")
     public void listener( Message<LogMessage> message){
-        logger.info("receive message:"+message.getPayload().toString());
+
+        logger.info("接受到一个消息日志:"+message.getPayload().toString());
     }
 
 

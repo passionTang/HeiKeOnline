@@ -14,17 +14,14 @@ import java.util.Map;
  * @description:
  */
 @Component
-public class Provider {
+public class LogProvider {
 
-    private static Logger logger = Logger.getLogger(Provider.class);
+    private static Logger logger = Logger.getLogger(LogProvider.class);
 
     @SendTo(value = "channel-log")
-    public LogMessage provide(){
-        logger.info("provide message :"+"this is log content");
+    public LogMessage provide(LogMessage logMessage){
+        logger.info("发送一个消息日志:"+logMessage);
 
-        Map<String, Object> headers = new HashMap<>();
-        LogMessage logMessage=new LogMessage();
-        logMessage.setContent("this is log content");
         return logMessage;
     }
 }
