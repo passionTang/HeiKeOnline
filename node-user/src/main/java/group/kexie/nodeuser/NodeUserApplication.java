@@ -1,6 +1,7 @@
 package group.kexie.nodeuser;
 
 import group.kexie.logconsumer.messagechannel.LogSendChannel;
+import group.kexie.logconsumer.messageprovide.LogProvider;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -26,6 +27,16 @@ public class NodeUserApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(NodeUserApplication.class, args);
+    }
+
+
+    /**
+     * 消息日志工具类
+     * @return
+     */
+    @Bean(name = "logProvider")
+    public LogProvider logProvider(){
+        return new LogProvider();
     }
 
 
