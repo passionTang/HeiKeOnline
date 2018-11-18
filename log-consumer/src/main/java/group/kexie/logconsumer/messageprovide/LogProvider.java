@@ -11,9 +11,9 @@ import java.util.Map;
 /**
  * @author tangbo
  * @date 2018/10/19 18:33
- * @description:
+ * @description: 消息日志发送类
  */
-@Component
+
 public class LogProvider {
 
     private static Logger logger = Logger.getLogger(LogProvider.class);
@@ -21,7 +21,6 @@ public class LogProvider {
     @SendTo(value = "channel-log")
     public LogMessage provide(LogMessage logMessage){
         logger.info("发送一个消息日志:"+logMessage);
-
         return logMessage;
     }
 }
