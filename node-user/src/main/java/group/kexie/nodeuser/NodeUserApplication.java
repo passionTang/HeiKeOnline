@@ -6,6 +6,7 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.cloud.stream.annotation.EnableBinding;
@@ -21,6 +22,9 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 @EnableDiscoveryClient
 /*创建消息通道实例*/
 @EnableBinding(value =LogSendChannel.class)
+/*开启缓存*/
+@EnableCaching
+
 @SpringBootApplication
 public class NodeUserApplication {
 
@@ -44,7 +48,7 @@ public class NodeUserApplication {
      * 使用redis作为缓存 @CacheEvit等注解的实现体层选择
      */
     @Bean(name="cacheManager")
-    public CacheManager cacheManager(RedisTemplate<?,?> redisTemplate) {
+    public CacheManager cacheManager(RedisTemplate<String,Object> redisTemplate) {
         CacheManager cacheManager = new RedisCacheManager(redisTemplate);
         return cacheManager;
     }
