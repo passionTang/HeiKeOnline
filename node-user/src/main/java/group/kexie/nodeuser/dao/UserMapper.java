@@ -1,9 +1,13 @@
 package group.kexie.nodeuser.dao;
 
 import group.kexie.nodeuser.entity.User;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 
 /**
@@ -13,16 +17,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserMapper {
 
-	//配置文件 xxxmapper.xml的方式 适用于复杂db操作
-//	User selectUserBaseData(@Param("userId") Integer userId);
 
-
-
-
-	//注解方式 适用于简单操作
-	@Select("select id,name,icon,viplevel,gender,city,province,country,registertime" +
-			" from user where id = #{userId}")
-	User selectUserBaseData(@Param("userId") Integer userId);
 
 	
 }
