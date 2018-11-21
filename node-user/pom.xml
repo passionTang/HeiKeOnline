@@ -108,6 +108,12 @@
             <version>1.4.6.RELEASE</version>
             <!--spring boot 整合redis-->
         </dependency>
+        <dependency>
+            <groupId>group.kexie</groupId>
+            <artifactId>node-websocket</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
 
     </dependencies>
 
