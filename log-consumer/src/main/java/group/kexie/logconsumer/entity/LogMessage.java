@@ -17,12 +17,7 @@ import java.util.Date;
 @AllArgsConstructor
 @ToString
 public class LogMessage {
-    public enum LogLevel{
-        DEBUG,
-        INFO,
-        WARN,
-        ERROR
-    }
+
     /*日志内容*/
     private String content;
     /*日志等级*/
