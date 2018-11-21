@@ -12,6 +12,10 @@ import java.util.List;
 public interface IUserService {
 
 
+	/**
+	 * 注册用户 用户第一次认证小程序 获取用户的sessionKey 和 openId保存到db
+	 */
+	User registerUser(int appId,String code) ;
 
 	/**
 	 * 获取用户基本信息 获取缓存方法
