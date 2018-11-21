@@ -7,10 +7,18 @@ import org.springframework.web.bind.annotation.*;
  * @author tangbo
  * @date 2018/11/19 20:08
  * @description:用户接口
- * @version 1.0.1
+ * @version 1.0.2
  *
  */
 public interface IUserController {
+
+    /**
+     * 用户注册 根据code获取sessionKey和OpenId并保存; 向客户端推送注册欢迎的webscoket消息
+     * @return user对象 (id) 注意不含sessionKey和OpenId等保密信息
+     */
+    @RequestMapping(value="/app{appId}/register",method=RequestMethod.GET)
+    User wexinLogin(@PathVariable("appId")int appId,String code);
+
     /**
      * 根据用户id获取用户基本信息
      * 字段有:id,name,icon,viplevel,gender,city,province,country,registertime
