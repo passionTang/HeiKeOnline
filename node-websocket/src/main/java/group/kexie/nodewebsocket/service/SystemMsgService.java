@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import group.kexie.logconsumer.entity.LogLevel;
 import group.kexie.logconsumer.entity.LogMessage;
 import group.kexie.logconsumer.messageprovide.LogProvider;
-import group.kexie.nodewebsocket.endpoint.UserWebSocketHandle;
+import group.kexie.nodewebsocket.handle.UserWebSocketHandle;
 import group.kexie.nodewebsocket.entity.RespWebsocketMsg;
 import group.kexie.nodewebsocket.entity.RespWebsocketMsg.RespWebsocketMsgKindOf;
 import group.kexie.nodewebsocket.entity.SystemMsg;

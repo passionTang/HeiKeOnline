@@ -1,4 +1,4 @@
-package group.kexie.nodewebsocket.endpoint;
+package group.kexie.nodewebsocket.handle;
 
 import group.kexie.logconsumer.entity.LogLevel;
 import group.kexie.logconsumer.entity.LogMessage;
@@ -31,11 +31,7 @@ public class UserWebSocketHandle implements WebSocketHandler {
 
 
     private Logger logger = Logger.getLogger(UserWebSocketHandle.class);
-    /*判断是否是单例*/
-    public UserWebSocketHandle() {
-        super();
-        logger.warn("new  Handle+++++++++");
-    }
+
 
     /**
      * 连接建立成功调用的方法
@@ -43,6 +39,7 @@ public class UserWebSocketHandle implements WebSocketHandler {
     @Override
     public void afterConnectionEstablished(WebSocketSession session)  {
         String connectInfo = "建立长连接成功";
+        LogLevel logLevel=LogLevel.INFO;
         String userId = session.getAttributes().get("userId").toString();
         try {
             WebSocketMessage<?> message=new TextMessage("连接成功");
@@ -51,9 +48,10 @@ public class UserWebSocketHandle implements WebSocketHandler {
             userSessions.put(userId, session);
         } catch (IOException e) {
             connectInfo = "建立长连接失败," + e.getMessage();
+            logLevel=LogLevel.ERROR;
         }finally {
             //向消息中心发送建立信息
-            logProvider.provide(new LogMessage("与用户userId:"+userId+ connectInfo, LogLevel.INFO,
+            logProvider.provide(new LogMessage("与用户userId:"+userId+ connectInfo, logLevel,
                     new Date(), nodeServerParam.getNodeServerName() + "_" + nodeServerParam.
                     getNodeServerHost() + ":" + nodeServerParam.getNodeServerPort()));
         }
@@ -73,7 +71,7 @@ public class UserWebSocketHandle implements WebSocketHandler {
     public void handleTransportError(WebSocketSession webSocketSession, Throwable throwable)  {
         String userId = webSocketSession.getAttributes().get("userId").toString();
 //        向消息中心发送错误信息
-        logProvider.provide(new LogMessage("与用户userId:" + userId + "长连接发生错误"+throwable.getMessage(), LogLevel.INFO,
+        logProvider.provide(new LogMessage("与用户userId:" + userId + "长连接发生错误"+throwable.getMessage(), LogLevel.ERROR,
                 new Date(), nodeServerParam.getNodeServerName() + "_" + nodeServerParam.
                 getNodeServerHost() + ":" + nodeServerParam.getNodeServerPort()));
     }

@@ -2,7 +2,7 @@ package group.kexie.nodewebsocket;
 
 import group.kexie.logconsumer.messagechannel.LogSendChannel;
 import group.kexie.logconsumer.messageprovide.LogProvider;
-import group.kexie.nodewebsocket.endpoint.UserWebSocketHandle;
+import group.kexie.nodewebsocket.handle.UserWebSocketHandle;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.CacheManager;
@@ -24,8 +24,6 @@ import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 @EnableFeignClients
 /*向注册中心注册*/
 @EnableDiscoveryClient
-/*开启缓存*/
-@EnableCaching
 /*使用websocket*/
 @EnableWebSocket
 @SpringBootApplication
