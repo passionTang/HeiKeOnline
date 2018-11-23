@@ -1,5 +1,6 @@
 package group.kexie.nodeuser.controller.api;
 
+import group.kexie.nodeuser.entity.GameConcern;
 import group.kexie.nodeuser.entity.User;
 import org.springframework.web.bind.annotation.*;
 
@@ -7,10 +8,33 @@ import org.springframework.web.bind.annotation.*;
  * @author tangbo
  * @date 2018/11/19 20:08
  * @description:用户接口
- * @version 1.0.2
+ * @version 1.0.3
  *
  */
 public interface IUserController {
+
+    /**
+     * 用户关注某赛事 判断是否已关注
+     * @param userConcern (userId,gameId)
+     * @return
+     */
+    @PostMapping(value="/concern")
+    int userConcernGame(@RequestBody GameConcern userConcern);
+    /**
+     * 用户取消关注某赛事
+     * @param userConcern
+     * @return
+     */
+    @DeleteMapping(value="/concern")
+    int userCancelConcernGame(@RequestBody GameConcern userConcern);
+
+
+
+
+
+
+
+
 
     /**
      * 用户注册 根据code获取sessionKey和OpenId并保存; 向客户端推送注册欢迎的webscoket消息
