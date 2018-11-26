@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date 2018/11/18 14:30
  * @description:
  */
-public class GameService {
+public class GameServiceImpl {
 
     @Autowired
     UserService userService;
